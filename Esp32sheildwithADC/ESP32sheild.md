@@ -16,3 +16,5 @@ The complete design files for the shield are available in [ESP32withmcp3208V3.zi
 
 ### Testing the ADC
 You can test the MCP3208 ADC using the provided script: [adctest.ino](adctest.ino).
+
+To test the MCP3208 and MPU6050, which uses SPI and I2C, can using the script:[spiabdi2c](spiandi2c.ino)
