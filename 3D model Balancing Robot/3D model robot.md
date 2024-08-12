@@ -1,6 +1,8 @@
-Two components form the original design has been edited to protect the cable and PCBs when falling.
+## Edited 3D Model of Balancing Robot
+Two components from the original design have been edited to protect the cables and PCBs in the event of a fall.
 
-The 3D model of the edited top battery holder - [Battery Holder stepV3 v1.step](Battery%20Holder%20stepV3%20v1.step).
-![Top](Top.png)
+- The 3D model of the edited top battery holder: [top.STEP](top.step)  
+  ![Top](Top.png)
 
-The 3Dmodel of the edited bottom battery holder-[Battery Holder stepV3 v1.step](Battery%20Holder%20stepV3%20v1.step)
+- The 3D model of the edited bottom battery holder: [bot.STEP](bot.step)  
+  ![Bot](Bot.png)
