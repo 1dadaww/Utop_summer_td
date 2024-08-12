@@ -1,3 +1,18 @@
-The new ESP32 sheild is made that combines with a mcp3208 ADC chip. The pin cnnections are using the default SPI pins of ESP32. In the new shield, the unstable pins such as pins for UART has been removed. For the rest GPIO pins The GPIO pins at top left corners are input only pins, the bottom left corners are the pins that support internal ADC of ESP32. For the right top corners, the SCL and SDA pins are the default pins for I2C communication. The default pins can be seen from the image.[ESP32pinout]
+# ESP32 Shield with MCP3208 ADC Chip
 
-The ADC can be test using a simple script [adctest.ino].
+This new ESP32 shield integrates an MCP3208 ADC chip, designed with the default SPI pins of the ESP32. We've optimized the design by removing unstable pins, such as those for UART, ensuring better reliability in various applications.
+
+### GPIO Pin Layout
+- **Top Left Corners:** Input-only pins.
+- **Bottom Left Corners:** Pins that support the internal ADC of the ESP32.
+- **Top Right Corners:** Default I2C communication pins (SCL and SDA).
+
+The default pin configuration for the ESP32 can be seen below:
+
+![ESP32 Pinout](ESP32pinout.png)
+
+### Design Files
+The complete design files for the shield are available in [ESP32withmcp3208V3.zip](ESP32withmcp3208V3.zip).
+
+### Testing the ADC
+You can test the MCP3208 ADC using the provided script: [adctest.ino](adctest.ino).
