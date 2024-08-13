@@ -12,7 +12,7 @@ The default pin configuration for the ESP32 can be seen below:
 ![ESP32 Pinout](ESP32pinout.png)
 
 ### Design Files
-The complete design files for the shield are available in [ESP32withmcp3208V4.zip](ESP32withmcp3208V3.zip).
+The complete design files for the shield are available in [ESP32withmcp3208V4.zip](ESP32withmcp3208V4.zip).
 
 ### Testing the ADC
 You can test the MCP3208 ADC using the provided script: [adctest.ino](adctest.ino).
