@@ -15,7 +15,7 @@ The default pin configuration for the ESP32 can be seen below:
 The complete design files for the shield are available in [ESP32withmcp3208V4.zip](ESP32withmcp3208V4.zip).
 
 ### ADC Specs
-The ADC model used in this shield is the LM4040-4.096V reference. The accuracy of this voltage reference varies between 0.1% and 1%, depending on the specific grade of the model. After testing with different power supply values, it was found that an A-grade LM4040 maintains 0.1% accuracy up to a power supply of 4.3V. This makes it suitable for the 5V pin of the ESP32, which typically operates around 4.7V.
+The voltage reference used in this shield is the LM4040-4.096V reference. The accuracy of this voltage reference varies between 0.1% and 1%, depending on the specific grade of the model. After testing with different power supply values, it was found that an A-grade LM4040 maintains 0.1% accuracy up to a power supply of 4.3V. This makes it suitable for the 5V pin of the ESP32, which typically operates around 4.7V.
 
 ### Testing the ADC
 You can test the MCP3208 ADC using the provided script: [adctest.ino](adctest.ino).
