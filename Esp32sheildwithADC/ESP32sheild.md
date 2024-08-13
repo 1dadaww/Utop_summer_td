@@ -17,6 +17,8 @@ The complete design files for the shield are available in [ESP32withmcp3208V4.zi
 ### ADC Specs
 The voltage reference used in this shield is the LM4040-4.096V reference. The accuracy of this voltage reference varies between 0.1% and 1%, depending on the specific grade of the model. After testing with different power supply values, it was found that an A-grade LM4040 maintains 0.1% accuracy up to a power supply of 4.3V. This makes it suitable for the 5V pin of the ESP32, which typically operates around 4.7V.
 
+Testing on the new sheild with 1V input DC signal and C grade voltage reference, the reading has tolerance around 0.5%.
+
 ### Testing the ADC
 You can test the MCP3208 ADC using the provided script: [adctest.ino](adctest.ino).
 
