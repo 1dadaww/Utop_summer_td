@@ -1,29 +1,42 @@
-For the current sensoring task of the balancing robot, a few improvement can be made.
+### Voltage drop caused by impedance of the track
+For the current sensing task of the balancing robot, a few improvements can be made.
 
-Firstly, the initial power PCB can be seen from the the picture below-[powerpcb](powerpcb.png). The track between Vb and the one motor driver share a the same track with part of the track between VM pin for current sensoring and the VB, the impedance of the track casue some voltage drop, which makes the detected voltage drop between the shunt resitor larger than the actual value. 
+Firstly, the initial power PCB can be seen from the picture below:
+<img src="powerpcb.png" alt="powerpcb" width="400"/>
 
-From estimation, and testing with constant supply, impedance of that part of the path is appromatly 0.003 Ohm,which cause around 1.1 mV of voltage drop when testing using a motor that drive 385mA of current at 15V. The values may varies slightly when using different stepper mottor settings and the temperature. 
+The track between Vb and one motor driver shares the same path with part of the track between the VM pin (for current sensing) and Vb. The impedance of the track causes some voltage drop, which makes the detected voltage drop across the shunt resistor larger than the actual value.
 
-To solve this problem, the first possible solution is to include the voltage drop while doing the calculation. The resistance of the path is 0.003 ohm , and that is only for 1 motor driver.
+From estimation and testing with a constant supply, the impedance of that part of the path is approximately 0.003 Ohms, which causes around 1.1 mV of voltage drop when testing with a motor that draws 385mA of current at 15V. The values may vary slightly when using different stepper motor settings and with temperature changes.
 
-Secondly, difference shunt resistor values can be used. After testing with 3 different values of resistors, 10mohm, 50mOhm, and 100m ohm. The volage drop is relative constant. For testing with both motor driver, the percentage increase voltage difference are 16.5%, 3.3% and 1.4% respectively,(the total current for the drivers are difference in each testing condition possibly casued by the temperature of other components in the PCB ). 
-Therefore a larger resistor could increase the accuracy,however for larger resistor value the voltage drop of the shunt resitor higher. 
+To solve this problem, one possible solution is to include the voltage drop in the calculation. The resistance of the path is 0.003 ohms, and this is only for one motor driver.
 
-###
+Secondly, different shunt resistor values can be used. After testing with three different resistor values—10mΩ, 50mΩ, and 100mΩ—the voltage drop remains relatively constant. For testing with both motor drivers, the percentage increase in voltage difference is 16.5%, 3.3%, and 1.4%, respectively. (The total current for the drivers differs in each testing condition, possibly due to the temperature of other components on the PCB.) Therefore, a larger resistor could increase accuracy; however, for larger resistor values, the voltage drop across the shunt resistor is higher.
 
-Some current sensing circuit has potential risk of unstable performance and lead the current flowing from the current sesing circuit into the circuit. For example, the BJT current sensing circuit. the reason for that is because, when turn on the switch, there is a small current flowing from the Vout pin of the opamps, that potentially cause the BJT to become saturate,both junction forward biase, and that circuit is positive feedback circuit, that cause the output voltage continiously rising.  
+### Potential Issues with Current Sensing Circuits
 
-To improve this spefic circuit, one solution is to using mosfet instead of BJT, because mosfet is a purely voltage drive circuit, and the current only flow in one direction of two junctions of the mosfet. And also, using a negative feedback circuit can avoid this problem, swap the V+ and V- input and using pnp trasnsitor instead.
+Some current sensing circuits have a potential risk of unstable performance, which can lead to unintended current flow from the sensing circuit into the main circuit. !(circuit)[circuit.png]For example, in a BJT current sensing circuit, when the switch is turned on, a small current flows from the Vout pin of the op-amp, potentially causing the BJT to saturate, with both junctions forward biased. This creates a positive feedback loop, causing the output voltage to continuously rise.
 
-To avoid this problem in general, can suggest people to use IM as power supply of the current sensing circuit for the motor. In that case the BJT only turn on when the second switch switch on.
+To improve this specific circuit, one solution is to use a MOSFET instead of a BJT. A MOSFET is a purely voltage-driven device, and current flows in only one direction across two junctions of the MOSFET. Additionally, using a negative feedback circuit can avoid this problem; swap the V+ and V- inputs and use a PNP transistor instead.
 
-However, directly there is only one IM pin on the power PCB, using one wire that connect from the pcb to the circuit may cause some voltage drop becasue the cable carry some current for the opamps supply. Testing with a jumper wire for the IM, the voltage drop across the wire is around 0.1 mV, after amplification, the difference may cause larger difference. Therefore, it may good to add an additional pin on the PCB board.
+To avoid this problem in general, it is advisable to use the IM pin as the power supply for the current sensing circuit of the motor. In this case, the BJT will only turn on when the second switch is engaged.
 
-Other causes of unexpcted result. 
-1. Grounding. If the opamp not coomon ground of the the input pints, the current will imediately flow into the PCB for any circuit including the resistor differential circuit.
-2. Selecting correct opamp. The requiement for the opamps are 1.The supply voltage range need to cover at least 14V to 16.8V, which is the range of battery voltage that decay from 16.8v to around 13V. 2. The opamp for the motor current has to have rai to rail input since the supply voltage same as one of the input.And also it need to have differential coomon mode range acrross the supply range, for some opamps such as LT1637 labeled as rail to rail opamp but only have differential common mode range up to 15V. In testing, the ouput of the LT1637 model is lower than expected.3, it need to have low input offset voltage for accuracy.
-### Thinngs to notice when using the microprocessors
-The raspberry pi sometimes showing low voltage warning, after testing with power supply, the raspbery pi will show the low voltage warning very senstively when the voltage is less than 5V. That may casued by 1, the power source, some laptops have USB output less than 5V. 2, Using correct cable. using the AWG28 cable provided in the lab, the voltage drop is around 15mV,for the raspberry pi with no other sensors, which is very small.However, using other thin cable such as this cable below, the voltage drop is larger thatn 150mV which may effect the performance of some part the the board.
+However, since there is only one IM pin on the power PCB, using a single wire to connect the PCB to the circuit may cause some voltage drop because the cable carries current for the op-amp's supply. Testing with a jumper wire for the IM pin showed a voltage drop of around 0.1 mV. After amplification, this difference could lead to a larger error. Therefore, it may be beneficial to add an additional pin on the PCB.
 
-And also, for the ESp32 board, a diode is used to protect the board, it have a volage drop of 325mV. If using sensors run at 5V logic, need to check the spec to see if the supply voltage cover 4.6-4.7V.
-In addition, both of the board run at 3.3V logic, when choosing compoent make sure it has 3.3V voltage output, other wise potential dividers needed.
+### Other Causes of Unexpected Results
+
+1. **Grounding**: If the op-amp does not share a common ground with the input pins, current will immediately flow into the PCB for any circuit, including the resistor differential circuit.
+   
+2. **Selecting the Correct Op-Amp**: The requirements for the op-amp are as follows:
+   - The supply voltage range needs to cover at least 14V to 16.8V, which is the range of the battery voltage that decays from 16.8V to around 13V.
+   - The op-amp for motor current sensing must have rail-to-rail input since the supply voltage is the same as one of the inputs. It also needs to have a differential common-mode range across the supply range. Some op-amps, such as the LT1637, are labeled as rail-to-rail but only have a differential common-mode range up to 15V. During testing, the output of the LT1637 was lower than expected.
+   - It must have low input offset voltage for accuracy.
+
+### Things to Notice When Using Microprocessors
+
+The Raspberry Pi sometimes shows a low voltage warning. After testing with a power supply, it was found that the Raspberry Pi is very sensitive to voltage drops below 5V. This may be caused by:
+1. The power source—some laptops have USB outputs that are less than 5V.
+2. Using the correct cable—using the AWG28 cable provided in the lab, the voltage drop is around 15mV for the Raspberry Pi with no other sensors, which is very small. However, using other thin cables, such as the one shown below, ![usb](usbcable.png), the voltage drop is larger than 150mV, which may affect the performance of some parts of the board.
+
+Additionally, for the ESP32 board, a diode is used to protect the board, which has a voltage drop of 325mV. If using sensors that run at 5V logic, you need to check the specifications to see if the supply voltage covers 4.6-4.7V. 
+
+Furthermore, both the Raspberry Pi and ESP32 boards run at 3.3V logic, so when choosing components, ensure they have 3.3V output; otherwise, potential dividers may be needed.
