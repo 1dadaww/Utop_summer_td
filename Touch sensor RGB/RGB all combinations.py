@@ -123,6 +123,18 @@ while True:
         np[0] = colors[2]
         np[1] = colors[3]
 
+# Example of flashing light
+#     elif pad1:
+#         for _ in range(2): 
+#             np[0] = colors[0]  
+#             np[1] = colors[0] 
+#             np.write()        
+#             utime.sleep(0.2)   
+#             
+#             np[0] = (0, 0, 0) 
+#             np[1] = (0, 0, 0) 
+#             np.write()         
+#             utime.sleep(0.2)
     elif pad1:
         np[0] = colors[0]
         np[1] = colors[0]
