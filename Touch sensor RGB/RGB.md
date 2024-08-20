@@ -21,8 +21,9 @@ The assembled model looks like the diagram below:
 
 ![Assemble](Assemble%20design.png)
 
-A connector is required to connect the 10mm thick acrylic board to the PCB board. All screws used in the design are M3 screws.
+A connector is required to connect the acrylic board to the PCB board. All screws used in the design are M3 screws.
 
-- The 3D model of the connector can be found in the file [connectorrgb v4.step](connectorrgb%20v4.step).
-- The laser cutting file for the 10mm acrylic board is available here: [rgbSVG.svg](rgbSVG.svg).
-- The laser cuttig file for combining two 5mm acrylic board is available here :[rgb250.svg](rgb250.svg)
+- The 3D model of the connector for 10mm thick can be found in the file [connectorrgb v4.step](connectorrgb%20v4.step).
+- The 3D model for single 5mm layer is available here: [connector5mm.step](connector5mm.step).
+- The laser cutting file for single layer crylic board is available here: [rgbline2.pdf](rgbline2.pdf).
+- The laser cuttig file for combining two acrylic boards is available here :[rgb250.pdf](rgb250.pdf).
