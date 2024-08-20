@@ -1,6 +1,5 @@
 This project uses a Raspberry Pi Pico to detect readings from 4 touch sensors. You can view the [schematic diagram](RGBsch.pdf). The full circuit design is available in the zip file [RGB control V3.zip](RGB%20control%20V3.zip).
-The circuit design without analog conversion circuit is [RGB control without freq-analog.zip](RGB%20control%20without%20 
-freq-analog.zip)
+The circuit design without analog conversion circuit is [RGB control without freq-analog.zip](RGB%20control%20without%20freq-analog.zip)
 
 ### Input Types
 
