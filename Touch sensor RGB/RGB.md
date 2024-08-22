@@ -20,7 +20,7 @@ There are 2 different types of inputs:
 
 The assembled model looks like the diagram below:
 
-![Assemble](Assemble%20design.png)
+![Assemble](As.png)
 
 A connector is required to connect the acrylic board to the PCB board. All screws used in the design are M3 screws.
 
